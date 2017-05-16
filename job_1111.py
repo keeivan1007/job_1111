@@ -58,6 +58,7 @@ def join_into_job1111(url): #解析出內文並回存進資料庫
     
     import requests
     import sqlite3
+    import time
     from bs4 import BeautifulSoup
     
     try:
@@ -70,7 +71,9 @@ def join_into_job1111(url): #解析出內文並回存進資料庫
         info = htmlcode.find('div','w680').text #取w680便可抓到內文資訊
         new_info = info.replace('\n',' ').replace('、',' ').encode('ascii','ignore')
         final_info = new_info.decode()
-
+        
+        time.sleep(1)
+        
         with sqlite3.connect('job1111.sqlite') as conn:
             c = conn.cursor()  #p-10-12 ,3-17
             insert_string = "INSERT INTO job1111 (href,info) VALUES (?, ?)"
