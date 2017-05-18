@@ -9,7 +9,8 @@ output: 視覺化圖表
 
 
 def qualify(howmach,number = 10):
-    import numpy as np                                                               
+    import numpy as np
+    from pylab import savefig
     import matplotlib.pyplot as plt
     
     howmacharray = sorted(howmach.items(),key=lambda d:d[1],reverse = True) #把dict做排序，轉成數字排列大小的LIST(truple)
@@ -27,6 +28,8 @@ def qualify(howmach,number = 10):
     plt.rcParams['axes.unicode_minus']=False #讓圖表正常顯視負號
 
     plt.xticks(xs, labels) #排序x軸標籤,xs 設置有多少個, labels換成中文名稱
+    savefig('bar_chart.png')
+    savefig('bar_chart.pdf')
     plt.show()
     
     
